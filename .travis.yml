@@ -1,0 +1,13 @@
+notifications:
+    email:
+        - me@rogerignazio.com
+rvm:
+    - 2.1.1
+    - 2.0.0-p481
+    - 1.9.3-p484
+env:
+    - PUPPET_VERSION=3.7.0
+    - PUPPET_VERSION=3.6.2
+before_install:
+    - bundle --version
+    - gem --version

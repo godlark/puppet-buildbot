@@ -1,0 +1,21 @@
+{
+    "name":         "rji-buildbot",
+    "version":      "1.0.0",
+    "author":       "rji",
+    "summary":      "Manage a Buildbot CI installation.",
+    "license":      "Apache License, Version 2.0",
+    "source":       "https://github.com/rji/puppet-buildbot",
+    "project_page": "https://github.com/rji/puppet-buildbot",
+    "issues_url":   "https://github.com/rji/puppet-buildbot/issues",
+    "dependencies": [
+        {
+            "name":          "puppetlabs-concat",
+            "version_range": ">= 1.0.0"
+        },
+        {
+            "name":          "puppetlabs-stdlib",
+            "version_range": ">= 1.0.0"
+        }
+    ]
+}
+
