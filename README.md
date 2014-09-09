@@ -16,6 +16,14 @@ work on other Debian and EL-based distros, provided the system-wide Python is
 version 2.6 or 2.7.
 
 ## Usage
+### Prerequisites
+In order to install `python-pip` on CentOS / EL-based distros, you'll need to
+have the EPEL repos configured. I recommend the [stahnma/epel][2] module.
+
+If you're not already managing your Apt configuration with Puppet, I recommend
+using the [puppetlabs/apt][3] module to ensure `apt-get update` runs prior
+to this module installing the `python-pip` package.
+
 ### Masters
 #### Parameters
   * `project` (required): the name of the project this Buildbot install is
@@ -43,7 +51,7 @@ populate the config file.
   * `master_port` (optional): the port on the master for the slave to connect
   to. Defaults to '9989'.
   * `slave_name` (optional): the name to use for this slave. Defaults to the
-  FQDN returned by Facter`.
+  FQDN returned by Facter.
   * `password` (optional): the password to connect the slave to the
   master. This will default to 'Buildbot-slave-pw'.
   * `admin` (optional): name and e-mail address of the sysadmin responsible
@@ -66,4 +74,6 @@ populate the config file.
 
 <!-- reference links -->
 [1]: http://buildbot.net
+[2]: https://forge.puppetlabs.com/stahnma/epel
+[3]: https://forge.puppetlabs.com/puppetlabs/apt
 
