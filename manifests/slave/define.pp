@@ -1,3 +1,4 @@
+# Define: buildbot::slave::define
 #
 define buildbot::slave::define(
   $buildbot_master,
@@ -13,6 +14,6 @@ define buildbot::slave::define(
     ensure  => present,
     order   => 20,
     target  => "${::buildbot::params::home}/master/master.cfg",
-    content => template('buildbot/master-20.cfg.erb'),
+    content => "c['slaves'].append(BuildSlave('${slave_name}', '${password}', max_builds=${max_builds}))",
   }
 }
