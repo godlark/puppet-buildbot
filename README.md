@@ -34,9 +34,9 @@ to this module installing the `python-pip` package.
 
 ```puppet
     class { '::buildbot::master':
-        project    => 'Example',
-        projecturl => 'http://www.example.com',
-        slave_port => '9989',
+        project     => 'Example',
+        project_url => 'http://www.example.com',
+        slave_port  => '9989',
     }
 ```
 
