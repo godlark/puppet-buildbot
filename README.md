@@ -72,8 +72,61 @@ populate the config file.
     }
 ```
 
+### Configuration (master.cfg)
+If you're new to Buildbot, please [read the docs][4] first. Otherwise, the best
+way to explain how to use this code is using the same PyFlakes example that
+comes in `master.cfg.sample`.
+
+```puppet
+    buildbot::builder { 'runtests':
+      ensure     => present,                 # optional
+      slavenames => ['example-slave'],
+      factory    => 'factory',
+    }
+
+    buildbot::changesource { 'PyFlakes Git repo':
+      ensure        => present,               # optional
+      branch        => 'master',              # optional, defaults to 'master'
+      poll_interval => '300',                 # optional, defaults to '300'
+      type          => 'GitPoller',           # optional, defaults to 'GitPoller'
+      url           => 'git://github.com/buildbot/pyflakes.git',
+      work_dir      => 'gitpoller-workdir',   # optional, defaults to 'gitpoller-workdir'
+    }
+
+    buildbot::factory { 'factory':
+      ensure => present,                      # optional
+    }
+
+    buildbot::factory::add_step { 'factory-10':
+      ensure  => present,                     # optional
+      factory => 'factory',
+      step    => "Git(repourl='git://github.com/buildbot/pyflakes.git', mode='incremental')",
+    }
+
+    buildbot::factory::add_step { 'factory-20':
+      ensure  => present,                     # optional
+      factory => 'factory',
+      step    => 'ShellCommand(command=["trial", "pyflakes"])',
+    }
+
+    buildbot::scheduler { 'pyflakes-all':
+      ensure            => present,           # optional
+      type              => 'SingleBranchScheduler',
+      change_filter     => "branch='master'",
+      tree_stable_timer => 'None',            # optional
+      builder_names     => [ 'runtests' ],
+    }
+
+    buildbot::scheduler { 'pyflakes-force':
+      ensure       => present,                # optional
+      type         => 'ForceScheduler',
+      builderNames => [ 'runtests' ],
+    }
+```
+
 <!-- reference links -->
 [1]: http://buildbot.net
 [2]: https://forge.puppetlabs.com/stahnma/epel
 [3]: https://forge.puppetlabs.com/puppetlabs/apt
+[4]: http://docs.buildbot.net/current/tutorial/
 
