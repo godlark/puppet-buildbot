@@ -1,8 +1,8 @@
 source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
 gem 'rake'
+gem 'puppetlabs_spec_helper'
 gem 'puppet-lint'
-gem 'rspec-puppet'
 
 if puppetversion = ENV['PUPPET_VERSION']
   gem 'puppet', puppetversion
