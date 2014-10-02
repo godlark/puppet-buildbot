@@ -11,4 +11,5 @@ PuppetLint.configuration.send('disable_documentation')
 PuppetLint.configuration.send('disable_only_variable_string')
 PuppetLint.configuration.send('disable_single_quote_string_with_variables')
 
+ENV['SPEC_OPTS'] = "-fd -c --deprecation-out /dev/null"
 task :default => [ :lint, :spec ]

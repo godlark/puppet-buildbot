@@ -12,6 +12,6 @@ before_install:
     - gem --version
 script:
     - bundle exec rake lint
-    - bundle exec rake spec SPEC_OPTS="-fd -c --deprecation-out /dev/null"
+    - bundle exec rake spec
 notifications:
     email: false
