@@ -12,7 +12,7 @@ define buildbot::slave::define(
 
   concat::fragment { "buildbot_${buildbot_master}_slave_${slave_name}":
     ensure  => present,
-    order   => 20,
+    order   => 15,
     target  => "${::buildbot::params::home}/master/master.cfg",
     content => "c['slaves'].append(BuildSlave('${slave_name}', '${password}', max_builds=${max_builds}))",
   }

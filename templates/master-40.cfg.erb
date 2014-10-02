@@ -1,10 +1,12 @@
 
-####### SCHEDULERS
+####### BUILDERS
 
-# Configure the Schedulers, which decide how to react to incoming changes.
-# In this case, just kick off a 'runtests' build
+# The 'builders' list defines the Builders, which tell Buildbot how to perform
+# a build: what steps, and which slaves can execute them. Note that any
+# particular build will only take place on one slave.
 
-from buildbot.schedulers.basic import SingleBranchScheduler
-from buildbot.schedulers.forcesched import ForceScheduler
-from buildbot.changes import filter
-c['schedulers'] = []
+from buildbot.process.factory import BuildFactory
+from buildbot.steps.source.git import Git
+from buildbot.steps.shell import ShellCommand
+
+factory = BuildFactory()

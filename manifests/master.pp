@@ -83,10 +83,10 @@ class buildbot::master(
   buildbot::master::collect_exported { $::hostname: }
   buildbot::master::collect_exported { $::ipaddress: }
 
-  concat::fragment { 'buildbot-master-config-70':
+  concat::fragment { 'buildbot-master-config-60':
     target  => $master_config,
-    content => template('buildbot/master-70.cfg.erb'),
-    order   => 70,
+    content => template('buildbot/master-60.cfg.erb'),
+    order   => 60,
   }
 
   exec { 'buildbot-master-start':
