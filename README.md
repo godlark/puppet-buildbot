@@ -11,9 +11,9 @@ manages the service with Buildbot's own methods (via the `buildbot` and
 `buildbot-slave` executables).
 
 ## Compatibility
-This module was developed to work with Debian 7 "Wheezy" and CentOS 6. It may
-work on other Debian and EL-based distros, provided the system-wide Python is
-version 2.6 or 2.7.
+This module was developed to work with Debian 7 "Wheezy" and RHEL/CentOS 6.
+It may work (with a little tweaking) on other Debian and EL-based distros,
+provided the system-wide Python is version 2.6 or 2.7.
 
 ## Usage
 ### Prerequisites
