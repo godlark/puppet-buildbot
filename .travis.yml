@@ -1,6 +1,3 @@
-notifications:
-    email:
-        - me@rogerignazio.com
 language: ruby
 rvm:
     - 2.1.1
@@ -13,3 +10,8 @@ env:
 before_install:
     - bundle --version
     - gem --version
+script:
+    - bundle exec rake lint
+    - bundle exec rake spec SPEC_OPTS="-fd -c --deprecation-out /dev/null"
+notifications:
+    email: false
