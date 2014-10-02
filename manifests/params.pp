@@ -13,10 +13,10 @@ class buildbot::params {
   $home  = '/home/buildbot'
   $shell = '/bin/bash'
 
-  $prereq_pkgs = $::osfamily ? {
-    'Debian' => [ 'python-dev', 'python-pip' ],
-    'RedHat' => [ 'python-devel', 'python-pip' ],
-    default  => fail("Unsupported OS family '${::osfamily}'"),
+  case $::osfamily {
+    'Debian': { $prereq_pkgs = [ 'python-dev', 'python-pip' ]   }
+    'RedHat': { $prereq_pkgs = [ 'python-devel', 'python-pip' ] }
+    default:  { fail("Unsupported OS family '${::osfamily}'")   }
   }
 
   # Build slave parameters
