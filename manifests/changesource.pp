@@ -9,6 +9,8 @@ define buildbot::changesource (
   $work_dir      = 'gitpoller-workdir',
 ){
 
+  include ::buildbot::params
+
   concat::fragment { "buildbot_changesource_${name}":
     ensure  => $ensure,
     order   => 25,

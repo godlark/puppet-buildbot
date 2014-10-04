@@ -7,7 +7,11 @@ define buildbot::scheduler (
   $ensure            = 'present',
   $tree_stable_timer = undef,
 ){
+
+  include ::buildbot::params
+
   validate_array($builder_names)
+  $builder_names_literal = inline_template('<%= @builder_names.inspect %>')
 
   case $type {
 
@@ -21,7 +25,7 @@ define buildbot::scheduler (
           ensure  => $ensure,
           order   => 35,
           target  => "${::buildbot::params::home}/master/master.cfg",
-          content => "c['schedulers'].append(${type}(name='${name}', change_filter=filter.ChangeFilter(${change_filter}), treeStableTimer=${tree_stable_timer}, builderNames=${builder_names})\n",
+          content => "c['schedulers'].append(${type}(name='${name}', change_filter=filter.ChangeFilter(${change_filter}), treeStableTimer=${tree_stable_timer}, builderNames=${builder_names_literal}))\n",
           }
         }
       }
@@ -31,7 +35,7 @@ define buildbot::scheduler (
           ensure  => $ensure,
           order   => 35,
           target  => "${::buildbot::params::home}/master/master.cfg",
-          content => "c['schedulers'].append(${type}(name='${name}', builderNames=${builder_names}))\n",
+          content => "c['schedulers'].append(${type}(name='${name}', builderNames=${builder_names_literal}))\n",
         }
       }
 

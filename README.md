@@ -87,9 +87,9 @@ comes in `master.cfg.sample`.
 
 ```puppet
     buildbot::builder { 'runtests':
-      ensure     => present,                 # optional
-      slavenames => ['example-slave'],
-      factory    => 'factory',
+      ensure      => present,                 # optional
+      slave_names => ['example-slave'],
+      factory     => 'factory',
     }
 
     buildbot::changesource { 'PyFlakes Git repo':

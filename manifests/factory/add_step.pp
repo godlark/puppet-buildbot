@@ -6,6 +6,8 @@ define buildbot::factory::add_step (
   $ensure = 'present',
 ){
 
+  include ::buildbot::params
+
   concat::fragment { "buildbot_factory_${factory}_step_${name}":
     ensure  => $ensure,
     order   => 45,

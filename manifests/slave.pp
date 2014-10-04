@@ -129,7 +129,7 @@ class buildbot::slave(
   }
 
   # Export our BuildSlave instance to be collected on the master
-  @@buildbot::slave::define { "buildbot_${master}_slave_${slave_name}":
+  @@buildbot::slave::define { "buildbot_${master}_slave_${slave_name_real}":
     buildbot_master => $master,
     slave_name      => $slave_name_real,
     password        => $password_real,
