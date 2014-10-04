@@ -118,9 +118,9 @@ comes in `master.cfg.sample`.
     }
 
     buildbot::scheduler { 'pyflakes-force':
-      ensure       => present,                # optional
-      type         => 'ForceScheduler',
-      builderNames => [ 'runtests' ],
+      ensure        => present,               # optional
+      type          => 'ForceScheduler',
+      builder_names => [ 'runtests' ],
     }
 ```
 
