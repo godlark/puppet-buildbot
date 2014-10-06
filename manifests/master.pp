@@ -7,6 +7,7 @@ class buildbot::master(
   $slave_port = undef,
 ){
   include ::buildbot::params
+  include ::concat::setup
 
   $slave_port_real = $slave_port ? {
     undef   => $::buildbot::params::slave_port,
