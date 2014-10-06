@@ -23,6 +23,12 @@ provided the system-wide Python is version 2.6 or 2.7.
 If this module should prove useful, I intend to add support for pyenv and
 virtualenv to make this a bit more portable.
 
+## Known Issues
+Authentication and authorization support isn't yet complete. In the meantime,
+you can login to the web interface with the following credentials:
+  * Username: `test`
+  * Password: `test`
+
 ## Usage
 ### Prerequisites
 In order to install `python-pip` on CentOS / EL-based distros, you'll need to
