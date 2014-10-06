@@ -5,15 +5,23 @@ A Puppet module to manage a [Buildbot][1] CI installation.
   * Puppet Forge: <https://forge.puppetlabs.com/rji/buildbot>
 
 ## Overview
-This module manages masters and slaves in a Buildbot CI system. It installs
-`buildbot` and `buildbot-slave` via pip, manages configuration files, and
-manages the service with Buildbot's own methods (via the `buildbot` and
-`buildbot-slave` executables).
+This module is an experiment to manage buildmasters, buildslaves, and
+configurations for a Buildbot CI system. Since Buildbot is a powerful and
+complex framework, I'm not yet sure that it's worthwhile managing all aspects
+of the configuration in a Puppet-like way. This module should at least get the
+[PyFlakes sample config][5] up and running.
+
+Currently, this module supports installing `buildbot` and `buildbot-slave` via
+pip, manages/builds configuration files, and manages the service with
+Buildbot's own methods (via the `buildbot` and `buildbot-slave` executables).
 
 ## Compatibility
 This module was developed to work with Debian 7 "Wheezy" and RHEL/CentOS 6.
 It may work (with a little tweaking) on other Debian and EL-based distros,
 provided the system-wide Python is version 2.6 or 2.7.
+
+If this module should prove useful, I intend to add support for pyenv and
+virtualenv to make this a bit more portable.
 
 ## Usage
 ### Prerequisites
@@ -129,4 +137,4 @@ comes in `master.cfg.sample`.
 [2]: https://forge.puppetlabs.com/stahnma/epel
 [3]: https://forge.puppetlabs.com/puppetlabs/apt
 [4]: http://docs.buildbot.net/current/tutorial/
-
+[5]: https://github.com/buildbot/buildbot/blob/buildbot-0.8.9/master/buildbot/scripts/sample.cfg
